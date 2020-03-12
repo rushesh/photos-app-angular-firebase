@@ -1,0 +1,39 @@
+<div class="background">
+    <div class="card m-3">
+    <div class="card-header">
+    <img src="../../../assets/images/login-avatar.png" class="avatar">
+    </div>
+    <div class="card-body">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+               
+            </div>
+            <div class="form-group">
+                <label>Email ID</label>
+                <input type="text" formControlName="emailid" class="form-control" autofocus [ngClass]="{ 'is-invalid': submitted && f.emailid.errors }" />
+                <div *ngIf="submitted && f.emailid.errors" class="invalid-feedback">
+                    <div *ngIf="f.emailid.errors.required">Email is required</div>
+                    <div *ngIf="f.emailid.errors.email">Email must be a valid email address</div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Password</label>
+                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary mr-1">Login</button>
+                <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- <div *ngFor="let alert of alerts">
+    <alert [type]="alert.type"><span [innerHtml]="alert.msg"></span></alert>
+  </div> -->
+</div>

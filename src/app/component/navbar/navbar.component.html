@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-md bg-primary navbar-dark">
+  <button class="btn btn-primary" routerLink="/images"><b>Photo App</b></button>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
+      <li  *ngIf="!Auth.loggedin()" class="nav-item">
+        <button class="btn btn-primary" routerLink="/login" routerLinkActive="active">Login</button>
+      </li>
+      <li *ngIf="Auth.loggedin()" class="nav-item">
+        <button class="btn btn-primary" (click)="LogOutButton()">Log Out</button>
+      </li>
+      <li *ngIf="Auth.loggedin()" class="nav-item">
+        <button class="btn btn-primary" routerLink="/images">Images</button>
+      </li>
+      <li class="nav-item">
+        <button class="btn btn-primary" routerLink="/aboutus" routerLinkActive="active">About Us</button>
+      </li>
+      <li class="nav-item">
+        <button class="btn btn-primary" routerLink="/contactus" routerLinkActive="active">Contact Us</button>
+      </li>      
+    </ul>
+  </div>  
+</nav>

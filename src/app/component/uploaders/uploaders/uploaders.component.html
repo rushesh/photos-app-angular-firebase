@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <h1>File Uploader</h1>
+    <div class="row">
+<input type="file" class="btn" value="" (change)="onFileSelected($event)" multiple enctype="multipart/form-data" title="Select one or more images" accept="image/*" > 
+
+<button class="btn btn-primary" (click)='onUpload()' title="Click to upload images">
+    Upload
+</button>
+</div>
+<hr/>
+ <div *ngIf="currentUploadingFileName">
+ <h3>Upload Status</h3>
+    <h3>{{currentUploadingFileName}}</h3>
+
+    <div class="mb-2">
+        <progressbar [animate]="true" [value]="percentage" type="success" style="background-color: red;height: 50px;font-size: 30px;"><b>{{percentage}}%</b></progressbar>
+      </div>
+  </div>
+</div>

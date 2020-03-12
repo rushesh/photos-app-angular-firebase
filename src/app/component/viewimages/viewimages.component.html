@@ -1,0 +1,75 @@
+<div class="container-fluid">
+    <h1>Images</h1>
+    <hr/>
+    <button class="btn btn-primary" (click)="changeEndSliceTopThirty()">
+      Show Top 3 Images
+    </button>
+    <button class="btn btn-danger" (click)="changeEndSlice()" style="float: right;">
+      Show All Images
+    </button>
+    <hr/>
+    <div class="row" *ngIf="connectionStatus">
+      <div class="col-md-12 m-auto">
+        Sorry Could Not Connect to DB.
+      </div>
+    </div>
+
+
+    <div class="row" *ngIf="isLoading">
+      <div class="col-md-12 m-auto">
+        Fetching...
+      </div>
+    </div>
+
+
+
+    <div class="row" *ngIf="rowIndexArray && !isLoading">
+      <div class="col-md-12 m-auto">
+        <div class="card-columns">
+        <div *ngFor = "let image of rowIndexArray| slice:start:end ; let ind=index;">
+
+            <a target="_blank" 
+          style="color: black;max-width: none;" 
+          title="Click to enlarge"
+          (click)="selectedImage(imageList[image].imageUrl,imageList[image].imageName,imageList[image].imageDateUploaded,template)">
+          <div class="card">
+          <div class="card-body mb-2">
+            <img [src]="imageList[image].imageUrl" alt="{{imageList[image].imageName}}" class="img-responsive" style="max-width: 100%;">         
+        </div>
+        <div class="card-footer bg-info">
+          {{imageList[image].imageName}}
+        </div>
+          </div>
+        </a>
+          </div>
+
+        <!-- </div> -->
+
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!rowIndexArray && !isLoading">
+      No images
+  </div>
+  </div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <label class="">
+      Image Name
+    </label>
+    <h4 class="modal-title pull-left">
+
+      {{selectedImageName}}</h4>
+  </div>
+  <div class="modal-body">
+    <img [src]="selectedImageUrl" alt="selectedImageName" class="img-responsive" style="max-width: 100%;">         
+  </div>
+  <div class="modal-footer  pull-left">
+    <label class="">
+      Image Date
+    </label>
+    <h6>{{selectedImageDate}}</h6>
+  </div>
+  
+</ng-template>
