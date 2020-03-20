@@ -1,6 +1,23 @@
 <div class="container-fluid">
     <h1>File Uploader</h1>
     <div class="row">
+       
+        <div *ngIf="!files.length" class="col-12 rmpm dropzone" appDrag (files)="filesDropped($event)">
+            <div class="text-wrapper">
+                <div class="centered" title="Drag one or more images here">Drag and Drop your images here</div>
+            </div>
+        </div>
+        <!--droped image preview-->
+        <div *ngFor="let file of files">
+          <img *ngIf="file" [src]="file.url" width="100px" height="100px">
+        </div>
+        
+        <div *ngFor="let file of imagesArray2">
+            <img *ngIf="file" [src]="file.url" width="100px" height="100px">
+          </div>
+                
+        </div>
+        <div class="row">
 <input type="file" class="btn" value="" (change)="onFileSelected($event)" multiple enctype="multipart/form-data" title="Select one or more images" accept="image/*" > 
 
 <button class="btn btn-primary" (click)='onUpload()' title="Click to upload images">

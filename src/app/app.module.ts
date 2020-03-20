@@ -45,6 +45,14 @@ import { ContactusComponent } from '../app/component/contactus/contactus.compone
 import { AlertModule } from 'ngx-bootstrap/alert';
 
 import { AppRoutingModule } from './app-routing.module';
+import { DragDirective } from './component/uploaders/uploaders/drag.directive';
+
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { ImageCompressModule } from 'ng2-image-compress';
+
+import {GoTopButtonModule} from 'ng2-go-top-button';
 
 @NgModule({
   declarations: [
@@ -61,7 +69,8 @@ import { AppRoutingModule } from './app-routing.module';
     NavbarComponent,
     PagenotfoundComponent,
     AboutusComponent,
-    ContactusComponent
+    ContactusComponent,
+    DragDirective
   ],
   imports: [
     BrowserModule,
@@ -78,7 +87,9 @@ import { AppRoutingModule } from './app-routing.module';
     AngularFirestoreModule.enablePersistence(),
     AngularFireDatabaseModule,
     ProgressbarModule.forRoot(),
-  
+    InfiniteScrollModule,
+    ImageCompressModule,
+    GoTopButtonModule
   ],
   providers: [AuthGuard, GlobalUser],
   bootstrap: [AppComponent]

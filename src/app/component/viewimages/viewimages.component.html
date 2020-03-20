@@ -1,11 +1,49 @@
-<div class="container-fluid">
+<div class="button" class="btn btn-primary" (click)="showImageGroups()" style="margin: 10px;">
+  {{!showGroups?"Show Image By Group":"Hide Image Groups"}}
+</div>
+<br>
+<div class="container" *ngIf="groupedImagesShow" [hidden]="!showGroups">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let grpImg of groupedImagesShow; let i=index">
+      <p><b>{{grpImg.key}}</b></p> 
+      <ul class="list-group" *ngFor="let imgS of grpImg['myValue']">
+        
+        <a [href]="imgS.imageUrl" target="_blank" title="Click to open in new tab">
+        <li class="list-group-item list-group-item-action">
+          <p style="word-wrap: break-word;">{{imgS.imageName}}</p>
+         
+          <div class="image-parent">
+         
+            <img [src]="imgS.imageUrl" class="img-fluid" alt="imgS.imageName">
+          
+          </div>
+        </li>
+      </a>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="container" *ngIf="!groupedImagesShow" [hidden]="!showGroups">
+  <h3>
+    No Images to display as groups
+  </h3>
+</div>
+
+
+
+<div class="container-fluid" infiniteScroll
+[infiniteScrollDistance]="2"
+[infiniteScrollUpDistance]="0.1"
+[infiniteScrollThrottle]="30"
+(scrolled)="onScrollDown()"
+(scrolledUp)="onScrollUp()">
     <h1>Images</h1>
     <hr/>
     <button class="btn btn-primary" (click)="changeEndSliceTopThirty()">
-      Show Top 3 Images
+      Fetch Top 30 Images
     </button>
     <button class="btn btn-danger" (click)="changeEndSlice()" style="float: right;">
-      Show All Images
+      Fetch All Images
     </button>
     <hr/>
     <div class="row" *ngIf="connectionStatus">
@@ -13,53 +51,49 @@
         Sorry Could Not Connect to DB.
       </div>
     </div>
-
-
     <div class="row" *ngIf="isLoading">
       <div class="col-md-12 m-auto">
-        Fetching...
+        <h4>Fetching...</h4>
       </div>
     </div>
-
-
-
-    <div class="row" *ngIf="rowIndexArray && !isLoading">
+    <div class="row" *ngIf="rowIndexArray_copy && !isLoading">
       <div class="col-md-12 m-auto">
         <div class="card-columns">
-        <div *ngFor = "let image of rowIndexArray| slice:start:end ; let ind=index;">
-
+        <div *ngFor = "let image of rowIndexArray_copy">
+          <!-- <div *ngFor = "let image of rowIndexArray| slice:start:end ; let ind=index;"> -->
             <a target="_blank" 
           style="color: black;max-width: none;" 
           title="Click to enlarge"
-          (click)="selectedImage(imageList[image].imageUrl,imageList[image].imageName,imageList[image].imageDateUploaded,template)">
+          (click)="selectedImage(imageList_copy[image].imageUrl,imageList_copy[image].imageName,imageList_copy[image].imageDateUploaded,template)">
           <div class="card">
           <div class="card-body mb-2">
-            <img [src]="imageList[image].imageUrl" alt="{{imageList[image].imageName}}" class="img-responsive" style="max-width: 100%;">         
+            <img [src]="imageList_copy[image].imageUrl" alt="{{imageList_copy[image].imageName}}" class="img-responsive" style="max-width: 100%;">         
         </div>
         <div class="card-footer bg-info">
-          {{imageList[image].imageName}}
+          {{imageList_copy[image].imageName}}
         </div>
           </div>
         </a>
           </div>
-
-        <!-- </div> -->
-
       </div>
     </div>
+    
+    <button class="btn btn-danger" (click)="scrollToTop()" style="float: right;margin-top: 10px;margin-left: 10px;" *ngIf="groupedImagesShow">
+      Scroll to top
+    </button>
   </div>
-  <div *ngIf="!rowIndexArray && !isLoading">
-      No images
+  <div *ngIf="!groupedImagesShow">
+      <h3>No images to display</h3>
   </div>
-  </div>
+  
 
+  </div>
 <ng-template #template>
   <div class="modal-header">
     <label class="">
       Image Name
     </label>
     <h4 class="modal-title pull-left">
-
       {{selectedImageName}}</h4>
   </div>
   <div class="modal-body">
@@ -71,5 +105,4 @@
     </label>
     <h6>{{selectedImageDate}}</h6>
   </div>
-  
 </ng-template>

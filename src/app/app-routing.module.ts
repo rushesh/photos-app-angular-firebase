@@ -13,7 +13,7 @@ import { AppSubComponentComponent } from './component/app-sub-component/app-sub-
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch:'full'},
   { path: 'login', component: LoginComponent },
-  { path: 'images', component: AppSubComponentComponent, canActivate:[AuthGuard] },
+  { path: 'images', component: AppSubComponentComponent ,canActivate : [AuthGuard]},
 
   { path: 'contactus', component: ContactusComponent },
   { path: 'aboutus', component: AboutusComponent },

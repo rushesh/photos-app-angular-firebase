@@ -1,9 +1,9 @@
 .background{
-    background-image: url('../../../assets/images/slidehsow3.jpg');
+    /* background-image: url('../../../assets/images/slidehsow3.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;  
-    background-size: cover;
-    background-color: black;
+    background-size: cover; */
+    background-color: transparent;
 }
 img.avatar {
     width: 40%;
