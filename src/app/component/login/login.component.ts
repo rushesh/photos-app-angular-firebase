@@ -42,7 +42,7 @@ else{
       // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
       let data = this.Auth.logincheck(user_det);
       // console.log('User login status : ',data);
-      this.Auth.storeUserData(user_det);
+      // this.Auth.storeUserData(user_det);
           if(data){
             this.user.setUserLoggedInEmail();
             Swal.fire({

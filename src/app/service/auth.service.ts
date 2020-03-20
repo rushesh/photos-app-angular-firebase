@@ -28,45 +28,61 @@ constructor(private http: HttpClient) { }
       {
         this.storeUserData(this.loginDB.cred1admin);      
         return true;
+        break;
       }
       else
       {
         return false;
+        break;
+
       }
       case this.loginDB.cred2admin.id:
       if(password == this.loginDB.cred2admin.password)
       {
         this.storeUserData(this.loginDB.cred2admin);      
         return true;
+        break;
+
       }
       else
       {
         return false;
+        break;
+
       }
       case this.loginDB.cred1test.id:
       if(password == this.loginDB.cred1test.password)
       {
         this.storeUserData(this.loginDB.cred1test);      
         return true;
+        break;
+
       }
       else
       {
         return false;
+        break;
+
       }
       case this.loginDB.cred2test.id:
       if(password == this.loginDB.cred2test.password)
       {
         this.storeUserData(this.loginDB.cred2test);      
         return true;
+        break;
+
       }
       else
       {
         return false;
+        break;
+
       }
       default:
         return false;
-  }
+        break;
 
+  }
   }
       onLogOutActivity(){
         // this.authToken=null;
@@ -94,6 +110,7 @@ loggedin(){
   }
    storeUserData(data){
         if(data){
+          console.log(data);
         localStorage.setItem('name',data.name)
         localStorage.setItem('useremail',data.emailid);
         this.user=data.user;
