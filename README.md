@@ -13,7 +13,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Hosted URL
 https://angular-image-gallery-6e84c.firebaseapp.com/
 
-## Contect me for login credentials
+Contect with me for login credentials
 
 
 
