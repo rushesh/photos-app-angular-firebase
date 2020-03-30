@@ -1,6 +1,6 @@
 # Angular Image Upload
 
-Angular 8 Node & Express JS File Upload tutorial - Learn to create file uploading component in Angular using ng2-file-upload NPM package.
+Angular 8 Image Upload tutorial
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.6.
 
@@ -14,5 +14,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 https://angular-image-gallery-6e84c.firebaseapp.com/
 
 ## Contect me for login credentials
+
 
 
