@@ -19,7 +19,10 @@
             <div class="form-row">
                 <div class="form-group col">
                     <label>Password</label>
-                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <input [type]="togglePwd" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <p (mouseenter)="ShowPassword()" style="margin-top: 5px;" (mouseleave)="ShowPassword()" class="btn btn-primary">
+                        {{pwdBtnTxt}}
+                    </p>
                     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                         <div *ngIf="f.password.errors.required">Password is required</div>
                         <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
@@ -31,6 +34,7 @@
                 <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
             </div>
         </form>
+        
     </div>
 </div>
 <!-- <div *ngFor="let alert of alerts">

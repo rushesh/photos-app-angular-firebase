@@ -6,10 +6,10 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 
-import { FileSelectDirective } from 'ng2-file-upload';
+// import { FileSelectDirective } from 'ng2-file-upload';
 import { FormsModule,  ReactiveFormsModule } from '@angular/forms';
 import { ViewimagesComponent } from './component/viewimages/viewimages.component';
-import { FileuploaderComponent } from './component/fileuploader/fileuploader/fileuploader.component';
+// import { FileuploaderComponent } from './component/fileuploader/fileuploader/fileuploader.component';
 
 import {HttpClientModule} from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
@@ -51,15 +51,12 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { ImageCompressModule } from 'ng2-image-compress';
-
-import {GoTopButtonModule} from 'ng2-go-top-button';
-
 @NgModule({
   declarations: [
     AppComponent,
-    FileSelectDirective,
+    // FileSelectDirective,
     ViewimagesComponent,
-    FileuploaderComponent,
+    // FileuploaderComponent,
     UploadersComponent,
     ImagesComponent,
     ImageComponent,
@@ -88,8 +85,7 @@ import {GoTopButtonModule} from 'ng2-go-top-button';
     AngularFireDatabaseModule,
     ProgressbarModule.forRoot(),
     InfiniteScrollModule,
-    ImageCompressModule,
-    GoTopButtonModule
+    ImageCompressModule
   ],
   providers: [AuthGuard, GlobalUser],
   bootstrap: [AppComponent]

@@ -35,7 +35,8 @@ export const environment = {
       password:'Test2@123',
       name:'tester2'
     }
-  }
+  },
+  timerLogout:100
 };
 
 /*

@@ -42,6 +42,7 @@ newGroupArray = [];
 
 
   constructor(@Inject(DOCUMENT) private document: Document,private imgCompressService: ImageCompressService,private service: ImageService, private modalService: BsModalService) { }
+  
   showImageGroups(){
     this.showGroups=!this.showGroups;
   }

@@ -12,6 +12,7 @@ export class AuthService {
 user:any;
 loginDB;
   
+autoLogoutTimer=0;
 constructor(private http: HttpClient) { }
 
   logincheck(user){
@@ -20,10 +21,11 @@ constructor(private http: HttpClient) { }
   let emailid:string = user.emailid;
   let password: string = user.password;
 
+  this.autoLogoutTimer = +environment.timerLogout;
   
-  switch (emailid) {
-
-    case this.loginDB.cred1admin.id:
+  switch (emailid.toString().toLocaleLowerCase().trim()) {
+   
+    case this.loginDB.cred1admin.id.toString().toLocaleLowerCase().trim():
       if(password == this.loginDB.cred1admin.password)
       {
         this.storeUserData(this.loginDB.cred1admin);      
@@ -36,7 +38,7 @@ constructor(private http: HttpClient) { }
         break;
 
       }
-      case this.loginDB.cred2admin.id:
+      case this.loginDB.cred2admin.id.toString().toLocaleLowerCase().trim():
       if(password == this.loginDB.cred2admin.password)
       {
         this.storeUserData(this.loginDB.cred2admin);      
@@ -50,7 +52,7 @@ constructor(private http: HttpClient) { }
         break;
 
       }
-      case this.loginDB.cred1test.id:
+      case this.loginDB.cred1test.id.toString().toLocaleLowerCase().trim():
       if(password == this.loginDB.cred1test.password)
       {
         this.storeUserData(this.loginDB.cred1test);      
@@ -64,7 +66,7 @@ constructor(private http: HttpClient) { }
         break;
 
       }
-      case this.loginDB.cred2test.id:
+      case this.loginDB.cred2test.id.toString().toLocaleLowerCase().trim():
       if(password == this.loginDB.cred2test.password)
       {
         this.storeUserData(this.loginDB.cred2test);      
@@ -98,7 +100,11 @@ loggedin(){
     return false;
   }
 }
-
+autoLogout(){
+  setTimeout(()=>{
+    localStorage.clear();
+  },this.autoLogoutTimer);
+}
   registerUser(user){
     let headers = new HttpHeaders();
     headers.append('Content-Type','application/json');
@@ -110,9 +116,9 @@ loggedin(){
   }
    storeUserData(data){
         if(data){
-          console.log(data);
+          // console.log(data);
         localStorage.setItem('name',data.name)
-        localStorage.setItem('useremail',data.emailid);
+        localStorage.setItem('useremail',data.id);
         this.user=data.user;
         } 
       }

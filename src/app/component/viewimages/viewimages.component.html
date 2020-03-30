@@ -7,18 +7,17 @@
     <div class="col-md-3" *ngFor="let grpImg of groupedImagesShow; let i=index">
       <p><b>{{grpImg.key}}</b></p> 
       <ul class="list-group" *ngFor="let imgS of grpImg['myValue']">
-        
-        <a [href]="imgS.imageUrl" target="_blank" title="Click to open in new tab">
         <li class="list-group-item list-group-item-action">
+          <a [href]="imgS.imageUrl" target="_blank" title="Click to open in new tab" download="imgS.imageUrl">
           <p style="word-wrap: break-word;">{{imgS.imageName}}</p>
-         
+          </a>
+          <a [href]="imgS.imageUrl" title="Click to open in new tab" target="_blank">
           <div class="image-parent">
-         
             <img [src]="imgS.imageUrl" class="img-fluid" alt="imgS.imageName">
-          
           </div>
+          </a>
         </li>
-      </a>
+      
       </ul>
     </div>
   </div>

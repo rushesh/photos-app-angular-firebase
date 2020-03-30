@@ -15,7 +15,8 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   submitted = false;
-  
+  togglePwd='password';
+  pwdBtnTxt='Show Password';
   constructor(private router: Router,private formBuilder: FormBuilder, private Auth:AuthService, private user: GlobalUser) { }
 
   ngOnInit() {
@@ -26,6 +27,18 @@ export class LoginComponent implements OnInit {
           
       });
   }
+
+  ShowPassword(){
+    if(this.togglePwd=='password'){
+      this.togglePwd = "text";
+      this.pwdBtnTxt = "Hide Password";
+    }
+    else{
+      this.togglePwd = "password";
+      this.pwdBtnTxt = "Show Password";
+    }
+  }
+
   get f() { return this.loginForm.controls; }
 
   onSubmit() {
