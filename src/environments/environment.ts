@@ -7,7 +7,7 @@ export const environment = {
   firebaseConfig : {
     apiKey: "",
     authDomain: "",
-    databaseURL: "htps://angular-image-gallery-6e84c.firebaseio.com",
+    databaseURL: "",
     projectId: "",
     storageBucket: "",
     messagingSenderId: "",
